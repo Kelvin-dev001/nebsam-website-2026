@@ -206,7 +206,7 @@ export const services = [
 
   {
     slug: "smart-cut-out-systems",
-    name: "Smart Cut Out Systems",
+    name: "Smart Cut-Out Systems",
     summary: "Smart cut-out solutions designed to improve security and control.",
     faqs: [
       {
