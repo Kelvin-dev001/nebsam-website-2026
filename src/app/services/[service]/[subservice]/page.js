@@ -1,7 +1,22 @@
 import { notFound } from "next/navigation";
-import FAQ from "@/components/ui/FAQ";
-import { getSubservice } from "@/lib/service-helpers";
-import { buildServiceJsonLd, buildFaqJsonLd } from "@/lib/seo-jsonld";
+import FAQ from "../../../../components/ui/FAQ";
+import { getAllServices, getSubservice } from "../../../../lib/service-helpers";
+import { buildServiceJsonLd, buildFaqJsonLd } from "../../../../lib/seo-jsonld";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  const all = getAllServices();
+  const params = [];
+
+  for (const s of all) {
+    for (const sub of s.subservices || []) {
+      params.push({ service: s.slug, subservice: sub.slug });
+    }
+  }
+
+  return params;
+}
 
 export function generateMetadata({ params }) {
   const { service, subservice } = getSubservice(params.service, params.subservice);

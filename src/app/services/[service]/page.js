@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import FAQ from "@/components/ui/FAQ";
-import { getAllServices, getServiceBySlug, orderSubservices } from "@/lib/service-helpers";
-import { buildServiceJsonLd, buildFaqJsonLd } from "@/lib/seo-jsonld";
+import FAQ from "../../../components/ui/FAQ";
+import {
+  getAllServices,
+  getServiceBySlug,
+  orderSubservices,
+} from "../../../lib/service-helpers";
+import { buildServiceJsonLd, buildFaqJsonLd } from "../../../lib/seo-jsonld";
 
 export const dynamicParams = false;
 
@@ -72,7 +76,7 @@ export default function ServicePage({ params }) {
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-lg font-semibold">{sub.name}</h3>
                   {sub.badge ? (
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-[color:var(--text)]">
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs">
                       {sub.badge}
                     </span>
                   ) : null}
