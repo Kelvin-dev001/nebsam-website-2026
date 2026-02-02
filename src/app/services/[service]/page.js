@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FAQ from "@/components/ui/FAQ";
-import { getServiceBySlug, orderSubservices } from "@/lib/service-helpers";
+import { getAllServices, getServiceBySlug, orderSubservices } from "@/lib/service-helpers";
 import { buildServiceJsonLd, buildFaqJsonLd } from "@/lib/seo-jsonld";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getAllServices().map((s) => ({ service: s.slug }));
+}
 
 export function generateMetadata({ params }) {
   const service = getServiceBySlug(params.service);
