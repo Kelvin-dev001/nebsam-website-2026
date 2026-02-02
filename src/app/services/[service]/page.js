@@ -56,6 +56,9 @@ export default function ServicePage({ params }) {
       <header className="space-y-2">
         <p className="text-sm text-[color:var(--muted)]">Service</p>
         <h1 className="text-3xl font-semibold">{service.name}</h1>
+        <p className="text-xs text-[color:var(--muted)]">
+  Commit: {process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || "local"}
+</p>
         <p className="text-[color:var(--muted)]">{service.summary}</p>
       </header>
 
